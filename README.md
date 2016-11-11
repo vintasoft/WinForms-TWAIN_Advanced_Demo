@@ -2,6 +2,9 @@
 
 Demo application shows how to enumerate TWAIN devices, get device capabilities, acquire images from device and save images to a local disk or upload onto HTTP or FTP server. Demo uses functionality of <a href="https://www.vintasoft.com/vstwain-dotnet-index.html">VintaSoft Twain .NET SDK</a>. Source codes for C# and VB.NET are available.
 
+<h2>Screenshot</h2>
+<img src=http://www.vintasoft.com/images/screenshots/twain/vintasoft-twain-advanced-demo.png alt="VintaSoft TWAIN Advanced Demo">
+
 
 <h2>Download</h2>
 VintaSoft Twain .NET SDK distributive package can be downloaded here: https://www.vintasoft.com/download.html
