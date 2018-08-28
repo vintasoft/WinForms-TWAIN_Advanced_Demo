@@ -521,6 +521,7 @@ namespace TwainAdvancedDemo
             this.Controls.Add(this.previousImageButton);
             this.Controls.Add(this.devicesLabel);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VintaSoft TWAIN Advanced Demo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Resize += new System.EventHandler(this.MainForm_Resize);

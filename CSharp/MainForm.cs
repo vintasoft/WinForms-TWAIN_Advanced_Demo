@@ -70,7 +70,6 @@ namespace TwainAdvancedDemo
 
             UpdateUI();
         }
-
         #endregion
 
 
@@ -100,24 +99,33 @@ namespace TwainAdvancedDemo
             // if device manager is closed - open the device manager
             else
             {
-                // try to find the device manager specified by user
-                _deviceManager.IsTwain2Compatible = twain2CompatibleCheckBox.Checked;
-                // if device manager is not found
-                if (!_deviceManager.IsTwainAvailable)
+                try
                 {
-                    // try to find another device manager
-                    _deviceManager.IsTwain2Compatible = !_deviceManager.IsTwain2Compatible;
-                    // if device manager is not found again
+                    // try to find the device manager specified by user
+                    _deviceManager.IsTwain2Compatible = twain2CompatibleCheckBox.Checked;
+                    // if device manager is not found
                     if (!_deviceManager.IsTwainAvailable)
                     {
-                        // show dialog with error message
-                        MessageBox.Show("TWAIN device manager is not found.", "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // try to find another device manager
+                        _deviceManager.IsTwain2Compatible = !_deviceManager.IsTwain2Compatible;
+                        // if device manager is not found again
+                        if (!_deviceManager.IsTwainAvailable)
+                        {
+                            // show dialog with error message
+                            MessageBox.Show("TWAIN device manager is not found.", "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                        // open a HTML page with article describing how to solve the problem
-                        Process.Start("http://www.vintasoft.com/docs/vstwain-dotnet/index.html?Programming-Twain-Device_Manager.html");
+                            // open a HTML page with article describing how to solve the problem
+                            Process.Start("http://www.vintasoft.com/docs/vstwain-dotnet/Programming-Twain-Device_Manager.html");
 
-                        return;
+                            return;
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    // show dialog with error message
+                    MessageBox.Show(ex.Message, "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 // device manager is found
@@ -126,6 +134,13 @@ namespace TwainAdvancedDemo
                 if (twain2CompatibleCheckBox.Checked != _deviceManager.IsTwain2Compatible)
                     // update check box value 
                     twain2CompatibleCheckBox.Checked = _deviceManager.IsTwain2Compatible;
+
+                // if 64-bit TWAIN2 device manager is used
+                if (IntPtr.Size == 8 && _deviceManager.IsTwain2Compatible)
+                {
+                    if (!InitTwain2DeviceManagerMode())
+                        return;
+                }
 
                 try
                 {
@@ -141,7 +156,7 @@ namespace TwainAdvancedDemo
                     MessageBox.Show(ex.Message, "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     // open a HTML page with article describing how to solve the problem
-                    Process.Start("http://www.vintasoft.com/docs/vstwain-dotnet/index.html?Programming-Twain-Device_Manager.html");
+                    Process.Start("http://www.vintasoft.com/docs/vstwain-dotnet/Programming-Twain-Device_Manager.html");
 
                     return;
                 }
@@ -164,6 +179,51 @@ namespace TwainAdvancedDemo
             }
 
             UpdateUI();
+        }
+
+        /// <summary>
+        /// Initializes the device manager mode.
+        /// </summary>
+        private bool InitTwain2DeviceManagerMode()
+        {
+            // create a form that allows to view and edit mode of 64-bit TWAIN2 device manager
+            using (SelectDeviceManagerModeForm form = new SelectDeviceManagerModeForm())
+            {
+                // initialize form
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.Owner = this;
+                form.Use32BitDevices = _deviceManager.Are32BitDevicesUsed;
+
+                // show dialog
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    // if device manager mode is changed
+                    if (form.Use32BitDevices != _deviceManager.Are32BitDevicesUsed)
+                    {
+                        try
+                        {
+                            // if 32-bit devices must be used
+                            if (form.Use32BitDevices)
+                                _deviceManager.Use32BitDevices();
+                            else
+                                _deviceManager.Use64BitDevices();
+                        }
+                        catch (TwainDeviceManagerException ex)
+                        {
+                            // show dialog with error message
+                            MessageBox.Show(ex.Message, "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         #endregion
@@ -358,8 +418,8 @@ namespace TwainAdvancedDemo
                     else if (resolutionComboBox.SelectedIndex == 4)
                         resolution = new Resolution(600, 600);
 
-                    if (device.Resolution.Horizontal != resolution.Horizontal ||
-                        device.Resolution.Vertical != resolution.Vertical)
+                    if (device.Resolution.GetXResolutionInDpi() != resolution.GetXResolutionInDpi() ||
+                        device.Resolution.GetYResolutionInDpi() != resolution.GetYResolutionInDpi())
                         device.Resolution = resolution;
                 }
                 catch (TwainException)
@@ -420,7 +480,7 @@ namespace TwainAdvancedDemo
                             if (device.ShowUI && xferCount == 1)
                                 xferCount = -1;
                         }
-                        
+
                         device.XferCount = xferCount;
                     }
                 }
@@ -762,41 +822,35 @@ namespace TwainAdvancedDemo
                 switch (saveFileDialog1.FilterIndex)
                 {
                     case 3:	// JPEG
-                        JpegSaveSettingsForm jpegSettingsDlg = new JpegSaveSettingsForm();
-                        if (jpegSettingsDlg.ShowDialog() != DialogResult.OK)
-                            return;
+                        using (JpegSaveSettingsForm dlg = new JpegSaveSettingsForm())
+                        {
+                            if (dlg.ShowDialog() != DialogResult.OK)
+                                return;
 
-                        encoderSettings = new TwainJpegEncoderSettings();
-                        ((TwainJpegEncoderSettings)encoderSettings).JpegQuality = jpegSettingsDlg.Quality;
+                            encoderSettings = dlg.EncoderSettings;
+                        }
                         break;
 
                     case 5: // TIFF
-                        TiffSaveSettingsForm tiffSettingsDlg = new TiffSaveSettingsForm(isFileExist);
-                        if (tiffSettingsDlg.ShowDialog() != DialogResult.OK)
-                            return;
+                        using (TiffSaveSettingsForm dlg = new TiffSaveSettingsForm(isFileExist))
+                        {
+                            if (dlg.ShowDialog() != DialogResult.OK)
+                                return;
 
-                        saveAllImages = tiffSettingsDlg.SaveAllImages;
-                        encoderSettings = new TwainTiffEncoderSettings();
-                        TwainTiffEncoderSettings twainTiffEncoderSettings = (TwainTiffEncoderSettings)encoderSettings;
-                        twainTiffEncoderSettings.TiffMultiPage = tiffSettingsDlg.MultiPage;
-                        twainTiffEncoderSettings.TiffCompression = tiffSettingsDlg.Compression;
-                        twainTiffEncoderSettings.JpegQuality = tiffSettingsDlg.JpegQuality;
+                            saveAllImages = dlg.SaveAllImages;
+                            encoderSettings = dlg.EncoderSettings;
+                        }
                         break;
 
                     case 6: // PDF
-                        PdfSaveSettingsForm pdfSettingsDlg = new PdfSaveSettingsForm(isFileExist);
-                        if (pdfSettingsDlg.ShowDialog() != DialogResult.OK)
-                            return;
+                        using (PdfSaveSettingsForm dlg = new PdfSaveSettingsForm(isFileExist))
+                        {
+                            if (dlg.ShowDialog() != DialogResult.OK)
+                                return;
 
-                        saveAllImages = pdfSettingsDlg.SaveAllImages;
-                        encoderSettings = new TwainPdfEncoderSettings();
-                        TwainPdfEncoderSettings twainPdfEncoderSettings = (TwainPdfEncoderSettings)encoderSettings;
-                        twainPdfEncoderSettings.PdfMultiPage = pdfSettingsDlg.MultiPage;
-                        twainPdfEncoderSettings.PdfImageCompression = pdfSettingsDlg.Compression;
-                        twainPdfEncoderSettings.PdfACompatible = pdfSettingsDlg.PdfACompatible;
-                        twainPdfEncoderSettings.PdfDocumentInfo.Author = pdfSettingsDlg.PdfAuthor;
-                        twainPdfEncoderSettings.PdfDocumentInfo.Title = pdfSettingsDlg.PdfTitle;
-                        twainPdfEncoderSettings.JpegQuality = pdfSettingsDlg.JpegQuality;
+                            saveAllImages = dlg.SaveAllImages;
+                            encoderSettings = dlg.EncoderSettings;
+                        }
                         break;
                 }
 
@@ -947,6 +1001,7 @@ namespace TwainAdvancedDemo
                     hasDevices = true;
             }
 
+            twain2CompatibleCheckBox.Enabled = _deviceManager.State == DeviceManagerState.Closed;
             openDeviceManagerButton.Enabled = !_isImageAcquiring;
             selectDefaultDeviceButton.Enabled = isDeviceManagerOpened && !_isImageAcquiring;
 

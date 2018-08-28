@@ -80,7 +80,7 @@ namespace TwainAdvancedDemo
             this.httpUrlTextBox.Name = "httpUrlTextBox";
             this.httpUrlTextBox.Size = new System.Drawing.Size(248, 20);
             this.httpUrlTextBox.TabIndex = 0;
-            this.httpUrlTextBox.Text = "http://demos.vintasoft.com/WebTwainDemo/ImageUpload.aspx";
+            this.httpUrlTextBox.Text = "http://demos.vintasoft.com/AspNetTwainDemos/ImageUpload.aspx";
             // 
             // label7
             // 

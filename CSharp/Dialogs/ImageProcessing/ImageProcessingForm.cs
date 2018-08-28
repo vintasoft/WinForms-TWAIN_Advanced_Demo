@@ -53,7 +53,7 @@ namespace TwainAdvancedDemo
 
                 pictureBox1.Image = _image.GetAsBitmap();
 
-                this.Text = string.Format("Image Processing - {0} bpp, {1}x{2}, {3}x{4} dpi", _image.ImageInfo.BitCount, _image.ImageInfo.Width, _image.ImageInfo.Height, _image.ImageInfo.Resolution.Horizontal, _image.ImageInfo.Resolution.Vertical);
+                this.Text = string.Format("Image Processing - {0} bpp, {1}x{2}, {3}x{4} dpi", _image.ImageInfo.BitCount, _image.ImageInfo.Width, _image.ImageInfo.Height, _image.ImageInfo.Resolution.GetXResolutionInDpi(), _image.ImageInfo.Resolution.GetYResolutionInDpi());
             }
         }
 

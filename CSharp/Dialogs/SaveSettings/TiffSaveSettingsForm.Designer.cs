@@ -46,16 +46,26 @@ namespace TwainAdvancedDemo
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.saveAllImagesaddToDocumentRadioButton = new System.Windows.Forms.RadioButton();
             this.saveCurrentImageaddToDocumentRadioButton = new System.Windows.Forms.RadioButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.useTilesRadioButton = new System.Windows.Forms.RadioButton();
+            this.useStripsRadioButton = new System.Windows.Forms.RadioButton();
+            this.rowsPerStripNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.rowsPerStripLabel = new System.Windows.Forms.Label();
+            this.tileSizeNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.tileSizeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.jpegQualityNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.gbJpegCompression.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rowsPerStripNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileSizeNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // jpegQualityNumericUpDown
             // 
-            this.jpegQualityNumericUpDown.Location = new System.Drawing.Point(81, 19);
+            this.jpegQualityNumericUpDown.Location = new System.Drawing.Point(130, 19);
             this.jpegQualityNumericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
@@ -73,7 +83,7 @@ namespace TwainAdvancedDemo
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 21);
+            this.label1.Location = new System.Drawing.Point(82, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 2;
@@ -81,7 +91,7 @@ namespace TwainAdvancedDemo
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(40, 265);
+            this.okButton.Location = new System.Drawing.Point(78, 345);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 3;
@@ -92,7 +102,7 @@ namespace TwainAdvancedDemo
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(127, 265);
+            this.cancelButton.Location = new System.Drawing.Point(165, 345);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
@@ -109,7 +119,7 @@ namespace TwainAdvancedDemo
             this.groupBox1.Controls.Add(this.noneCompressionRadioButton);
             this.groupBox1.Location = new System.Drawing.Point(8, 123);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(225, 80);
+            this.groupBox1.Size = new System.Drawing.Size(301, 80);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compression";
@@ -117,7 +127,7 @@ namespace TwainAdvancedDemo
             // zipCompressionRadioButton
             // 
             this.zipCompressionRadioButton.AutoSize = true;
-            this.zipCompressionRadioButton.Location = new System.Drawing.Point(145, 37);
+            this.zipCompressionRadioButton.Location = new System.Drawing.Point(168, 37);
             this.zipCompressionRadioButton.Name = "zipCompressionRadioButton";
             this.zipCompressionRadioButton.Size = new System.Drawing.Size(42, 17);
             this.zipCompressionRadioButton.TabIndex = 5;
@@ -141,7 +151,7 @@ namespace TwainAdvancedDemo
             // jpegCompressionRadioButton
             // 
             this.jpegCompressionRadioButton.AutoSize = true;
-            this.jpegCompressionRadioButton.Location = new System.Drawing.Point(145, 55);
+            this.jpegCompressionRadioButton.Location = new System.Drawing.Point(168, 55);
             this.jpegCompressionRadioButton.Name = "jpegCompressionRadioButton";
             this.jpegCompressionRadioButton.Size = new System.Drawing.Size(52, 17);
             this.jpegCompressionRadioButton.TabIndex = 3;
@@ -152,7 +162,7 @@ namespace TwainAdvancedDemo
             // lzwCompressionRadioButton
             // 
             this.lzwCompressionRadioButton.AutoSize = true;
-            this.lzwCompressionRadioButton.Location = new System.Drawing.Point(145, 19);
+            this.lzwCompressionRadioButton.Location = new System.Drawing.Point(168, 19);
             this.lzwCompressionRadioButton.Name = "lzwCompressionRadioButton";
             this.lzwCompressionRadioButton.Size = new System.Drawing.Size(49, 17);
             this.lzwCompressionRadioButton.TabIndex = 2;
@@ -189,7 +199,7 @@ namespace TwainAdvancedDemo
             this.gbJpegCompression.Enabled = false;
             this.gbJpegCompression.Location = new System.Drawing.Point(8, 206);
             this.gbJpegCompression.Name = "gbJpegCompression";
-            this.gbJpegCompression.Size = new System.Drawing.Size(225, 51);
+            this.gbJpegCompression.Size = new System.Drawing.Size(301, 51);
             this.gbJpegCompression.TabIndex = 6;
             this.gbJpegCompression.TabStop = false;
             this.gbJpegCompression.Text = "JPEG compression";
@@ -222,7 +232,7 @@ namespace TwainAdvancedDemo
             this.groupBox2.Controls.Add(this.createNewDocumentaddToDocumentRadioButton);
             this.groupBox2.Location = new System.Drawing.Point(8, 64);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(225, 55);
+            this.groupBox2.Size = new System.Drawing.Size(301, 55);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Document settings";
@@ -233,7 +243,7 @@ namespace TwainAdvancedDemo
             this.groupBox3.Controls.Add(this.saveCurrentImageaddToDocumentRadioButton);
             this.groupBox3.Location = new System.Drawing.Point(8, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(225, 58);
+            this.groupBox3.Size = new System.Drawing.Size(301, 58);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Save settings";
@@ -260,13 +270,101 @@ namespace TwainAdvancedDemo
             this.saveCurrentImageaddToDocumentRadioButton.Text = "Save only current image";
             this.saveCurrentImageaddToDocumentRadioButton.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.useTilesRadioButton);
+            this.groupBox4.Controls.Add(this.useStripsRadioButton);
+            this.groupBox4.Controls.Add(this.rowsPerStripNumericUpDown);
+            this.groupBox4.Controls.Add(this.rowsPerStripLabel);
+            this.groupBox4.Controls.Add(this.tileSizeNumericUpDown);
+            this.groupBox4.Controls.Add(this.tileSizeLabel);
+            this.groupBox4.Location = new System.Drawing.Point(8, 263);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(301, 73);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Strips and tiles";
+            // 
+            // useTilesRadioButton
+            // 
+            this.useTilesRadioButton.AutoSize = true;
+            this.useTilesRadioButton.Location = new System.Drawing.Point(47, 42);
+            this.useTilesRadioButton.Name = "useTilesRadioButton";
+            this.useTilesRadioButton.Size = new System.Drawing.Size(65, 17);
+            this.useTilesRadioButton.TabIndex = 6;
+            this.useTilesRadioButton.Text = "Use tiles";
+            this.useTilesRadioButton.UseVisualStyleBackColor = true;
+            this.useTilesRadioButton.CheckedChanged += new System.EventHandler(this.useTilesRadioButton_CheckedChanged);
+            // 
+            // useStripsRadioButton
+            // 
+            this.useStripsRadioButton.AutoSize = true;
+            this.useStripsRadioButton.Checked = true;
+            this.useStripsRadioButton.Location = new System.Drawing.Point(47, 19);
+            this.useStripsRadioButton.Name = "useStripsRadioButton";
+            this.useStripsRadioButton.Size = new System.Drawing.Size(71, 17);
+            this.useStripsRadioButton.TabIndex = 5;
+            this.useStripsRadioButton.TabStop = true;
+            this.useStripsRadioButton.Text = "Use strips";
+            this.useStripsRadioButton.UseVisualStyleBackColor = true;
+            this.useStripsRadioButton.CheckedChanged += new System.EventHandler(this.useStripsRadioButton_CheckedChanged);
+            // 
+            // rowsPerStripNumericUpDown
+            // 
+            this.rowsPerStripNumericUpDown.Location = new System.Drawing.Point(140, 42);
+            this.rowsPerStripNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.rowsPerStripNumericUpDown.Name = "rowsPerStripNumericUpDown";
+            this.rowsPerStripNumericUpDown.Size = new System.Drawing.Size(89, 20);
+            this.rowsPerStripNumericUpDown.TabIndex = 3;
+            // 
+            // rowsPerStripLabel
+            // 
+            this.rowsPerStripLabel.AutoSize = true;
+            this.rowsPerStripLabel.Location = new System.Drawing.Point(137, 21);
+            this.rowsPerStripLabel.Name = "rowsPerStripLabel";
+            this.rowsPerStripLabel.Size = new System.Drawing.Size(77, 13);
+            this.rowsPerStripLabel.TabIndex = 4;
+            this.rowsPerStripLabel.Text = "Rows per strip:";
+            // 
+            // tileSizeNumericUpDown
+            // 
+            this.tileSizeNumericUpDown.Location = new System.Drawing.Point(140, 42);
+            this.tileSizeNumericUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.tileSizeNumericUpDown.Name = "tileSizeNumericUpDown";
+            this.tileSizeNumericUpDown.Size = new System.Drawing.Size(89, 20);
+            this.tileSizeNumericUpDown.TabIndex = 7;
+            this.tileSizeNumericUpDown.Value = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            this.tileSizeNumericUpDown.Visible = false;
+            // 
+            // tileSizeLabel
+            // 
+            this.tileSizeLabel.Location = new System.Drawing.Point(140, 21);
+            this.tileSizeLabel.Name = "tileSizeLabel";
+            this.tileSizeLabel.Size = new System.Drawing.Size(92, 13);
+            this.tileSizeLabel.TabIndex = 8;
+            this.tileSizeLabel.Text = "Tile size:";
+            this.tileSizeLabel.Visible = false;
+            // 
             // TiffSaveSettingsForm
             // 
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(242, 296);
+            this.ClientSize = new System.Drawing.Size(318, 378);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gbJpegCompression);
@@ -288,6 +386,10 @@ namespace TwainAdvancedDemo
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rowsPerStripNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileSizeNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -312,5 +414,12 @@ namespace TwainAdvancedDemo
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton saveAllImagesaddToDocumentRadioButton;
         private System.Windows.Forms.RadioButton saveCurrentImageaddToDocumentRadioButton;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.NumericUpDown rowsPerStripNumericUpDown;
+        private System.Windows.Forms.Label rowsPerStripLabel;
+        private System.Windows.Forms.RadioButton useTilesRadioButton;
+        private System.Windows.Forms.RadioButton useStripsRadioButton;
+        private System.Windows.Forms.NumericUpDown tileSizeNumericUpDown;
+        private System.Windows.Forms.Label tileSizeLabel;
 	}
 }

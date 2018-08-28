@@ -1,25 +1,40 @@
 using System;
 using System.Windows.Forms;
+using Vintasoft.Twain.ImageEncoders;
 
 namespace TwainAdvancedDemo
 {
 	public partial class JpegSaveSettingsForm : Form
 	{
-		int _quality = 90;
-		public int Quality
-		{
-			get { return _quality; }
-		}
 
-		public JpegSaveSettingsForm()
+        public JpegSaveSettingsForm()
 		{
 			InitializeComponent();
 		}
 
-		private void okButton_Click(object sender, EventArgs e)
+
+
+        TwainJpegEncoderSettings _encoderSettings = new TwainJpegEncoderSettings();
+        public TwainJpegEncoderSettings EncoderSettings
+        {
+            get { return _encoderSettings; }
+        }
+        
+        
+        
+        private void okButton_Click(object sender, EventArgs e)
 		{
-			_quality = (int)qualityNumericUpDown.Value;
-			DialogResult = DialogResult.OK;
+            try
+            {
+                _encoderSettings.JpegQuality = (int)qualityNumericUpDown.Value;
+
+                DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
 		}
+
 	}
 }
