@@ -1,4 +1,4 @@
-namespace TwainAdvancedDemo
+﻿namespace TwainAdvancedDemo
 {
 	partial class PdfSaveSettingsForm
 	{

@@ -1,9 +1,10 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+
 using Vintasoft.Twain;
 using Vintasoft.Twain.ImageEncoders;
 
@@ -66,7 +67,7 @@ namespace TwainAdvancedDemo
             GetCountryAndLanguage(out country, out language);
 
             // create TWAIN device manager
-            _deviceManager = new DeviceManager(this, country, language);
+            _deviceManager = new DeviceManager(this, this.Handle, country, language);
 
             UpdateUI();
         }
@@ -103,28 +104,15 @@ namespace TwainAdvancedDemo
                 {
                     // try to find the device manager specified by user
                     _deviceManager.IsTwain2Compatible = twain2CompatibleCheckBox.Checked;
-                    // if device manager is not found
-                    if (!_deviceManager.IsTwainAvailable)
-                    {
-                        // try to find another device manager
-                        _deviceManager.IsTwain2Compatible = !_deviceManager.IsTwain2Compatible;
-                        // if device manager is not found again
-                        if (!_deviceManager.IsTwainAvailable)
-                        {
-                            // show dialog with error message
-                            MessageBox.Show("TWAIN device manager is not found.", "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                            // open a HTML page with article describing how to solve the problem
-                            Process.Start("http://www.vintasoft.com/docs/vstwain-dotnet/Programming-Twain-Device_Manager.html");
-
-                            return;
-                        }
-                    }
                 }
                 catch (Exception ex)
                 {
                     // show dialog with error message
-                    MessageBox.Show(ex.Message, "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(GetFullExceptionMessage(ex), "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    // open a HTML page with article describing how to solve the problem
+                    OpenBrowser("http://www.vintasoft.com/docs/vstwain-dotnet/Programming-Twain-Device_Manager.html");
+
                     return;
                 }
 
@@ -153,10 +141,10 @@ namespace TwainAdvancedDemo
                     _deviceManager.Close();
 
                     // show dialog with error message
-                    MessageBox.Show(ex.Message, "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(GetFullExceptionMessage(ex), "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     // open a HTML page with article describing how to solve the problem
-                    Process.Start("http://www.vintasoft.com/docs/vstwain-dotnet/Programming-Twain-Device_Manager.html");
+                    OpenBrowser("http://www.vintasoft.com/docs/vstwain-dotnet/Programming-Twain-Device_Manager.html");
 
                     return;
                 }
@@ -211,7 +199,7 @@ namespace TwainAdvancedDemo
                         catch (TwainDeviceManagerException ex)
                         {
                             // show dialog with error message
-                            MessageBox.Show(ex.Message, "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(GetFullExceptionMessage(ex), "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                             return false;
                         }
@@ -272,11 +260,11 @@ namespace TwainAdvancedDemo
             }
             catch (TwainDeviceException ex)
             {
-                MessageBox.Show(ex.Message, "Device error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(GetFullExceptionMessage(ex), "Device error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (TwainDeviceCapabilityException ex)
             {
-                MessageBox.Show(ex.Message, "Device capability error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(GetFullExceptionMessage(ex), "Device capability error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -370,7 +358,7 @@ namespace TwainAdvancedDemo
                     // specify that image acquisition is finished
                     _isImageAcquiring = false;
 
-                    MessageBox.Show(ex.Message, "TWAIN device", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(GetFullExceptionMessage(ex), "TWAIN device", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -486,7 +474,7 @@ namespace TwainAdvancedDemo
                 }
                 catch (TwainException ex)
                 {
-                    MessageBox.Show(ex.Message, "TWAIN device");
+                    MessageBox.Show(GetFullExceptionMessage(ex), "TWAIN device");
                 }
 
                 // if device supports asynchronous events
@@ -513,7 +501,7 @@ namespace TwainAdvancedDemo
                     // specify that image acquisition is finished
                     _isImageAcquiring = false;
 
-                    MessageBox.Show(ex.Message, "TWAIN device", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(GetFullExceptionMessage(ex), "TWAIN device", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -884,7 +872,7 @@ namespace TwainAdvancedDemo
             catch (Exception ex)
             {
                 Cursor = Cursors.Default;
-                MessageBox.Show(ex.Message, "Saving error");
+                MessageBox.Show(GetFullExceptionMessage(ex), "Saving error");
             }
         }
 
@@ -1069,6 +1057,37 @@ namespace TwainAdvancedDemo
 
             // dispose all images from image collection and clear the image collection
             _images.ClearAndDisposeItems();
+        }
+
+        /// <summary>
+        /// Returns the message of exception and inner exceptions.
+        /// </summary>
+        private string GetFullExceptionMessage(Exception ex)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.AppendLine(ex.Message);
+
+            Exception innerException = ex.InnerException;
+            while (innerException != null)
+            {
+                if (ex.Message != innerException.Message)
+                    sb.AppendLine(string.Format("Inner exception: {0}", innerException.Message));
+                innerException = innerException.InnerException;
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Opens the browser with specified URL.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        private void OpenBrowser(string url)
+        {
+            ProcessStartInfo pi = new ProcessStartInfo("cmd", string.Format("/c start {0}", url));
+            pi.CreateNoWindow = true;
+            pi.WindowStyle = ProcessWindowStyle.Hidden;
+            Process.Start(pi);
         }
 
         #endregion

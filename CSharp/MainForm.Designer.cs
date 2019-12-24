@@ -1,4 +1,4 @@
-namespace TwainAdvancedDemo
+﻿namespace TwainAdvancedDemo
 {
     partial class MainForm
     {
@@ -495,7 +495,6 @@ namespace TwainAdvancedDemo
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 608);
             this.Controls.Add(this.clearImagesButton);

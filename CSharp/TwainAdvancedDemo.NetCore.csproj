@@ -1,0 +1,100 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <AssemblyName>TwainAdvanced</AssemblyName>
+
+    <EnableDefaultItems>false</EnableDefaultItems>    
+
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>  
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>    
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <OutputPath>bin\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutputPath>bin\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutputPath>bin\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Vintasoft.Twain" Version="11.0.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Dialogs\DevCapsForm.cs" />
+    <Compile Include="Dialogs\DevCapsForm.Designer.cs" />
+    <Compile Include="Dialogs\ImageProcessing\ImageProcessingForm.cs" />
+    <Compile Include="Dialogs\ImageProcessing\ImageProcessingForm.Designer.cs" />
+    <Compile Include="Dialogs\SaveSettings\JpegSaveSettingsForm.cs" />
+    <Compile Include="Dialogs\SaveSettings\JpegSaveSettingsForm.Designer.cs" />
+    <Compile Include="Dialogs\SaveSettings\PdfSaveSettingsForm.cs" />
+    <Compile Include="Dialogs\SaveSettings\PdfSaveSettingsForm.Designer.cs" />
+    <Compile Include="Dialogs\SaveSettings\TiffSaveSettingsForm.cs" />
+    <Compile Include="Dialogs\SaveSettings\TiffSaveSettingsForm.Designer.cs" />
+    <Compile Include="Dialogs\SelectDeviceManagerModeForm.cs" />
+    <Compile Include="Dialogs\SelectDeviceManagerModeForm.Designer.cs" />
+    <Compile Include="Dialogs\UploadForm.cs" />
+    <Compile Include="Dialogs\UploadForm.Designer.cs" />
+    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.Designer.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VintasoftTwainLicense.cs" />
+    <Content Include="App.ico" />
+    <None Include="Resources\NetCore\VintasoftTwainService.dll">
+      <Link>VintasoftTwainService.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\NetCore\VintasoftTwainService.exe">
+      <Link>VintasoftTwainService.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\NetCore\VintasoftTwainService.runtimeconfig.json">
+      <Link>VintasoftTwainService.runtimeconfig.json</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\VSTwainNetEvaluationLicenseManager.exe">
+      <Link>VSTwainNetEvaluationLicenseManager.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="_readme.txt" />
+    <EmbeddedResource Include="Dialogs\DevCapsForm.resx" />
+    <EmbeddedResource Include="Dialogs\ImageProcessing\ImageProcessingForm.resx" />
+    <EmbeddedResource Include="Dialogs\SaveSettings\JpegSaveSettingsForm.resx" />
+    <EmbeddedResource Include="Dialogs\SaveSettings\PdfSaveSettingsForm.resx" />
+    <EmbeddedResource Include="Dialogs\SaveSettings\TiffSaveSettingsForm.resx" />
+    <EmbeddedResource Include="Dialogs\SelectDeviceManagerModeForm.resx" />
+    <EmbeddedResource Include="Dialogs\UploadForm.resx" />
+    <EmbeddedResource Include="MainForm.resx" />
+  </ItemGroup>
+</Project>
