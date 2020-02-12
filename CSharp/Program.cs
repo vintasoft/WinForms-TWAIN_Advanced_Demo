@@ -33,7 +33,7 @@ namespace TwainAdvancedDemo
                 // show information about licensing exception
                 MessageBox.Show(string.Format("{0}: {1}", licenseException.GetType().Name, licenseException.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                string[] dirs = new string[] { ".", "..", @"..\..\..\", @"..\..\..\..\..\", @"..\..\..\..\..\..\..\" };
+                string[] dirs = new string[] { ".", "..", @"..\..\", @"..\..\..\", @"..\..\..\..\..\", @"..\..\..\..\..\..\..\" };
                 // for each directory
                 for (int i = 0; i < dirs.Length; i++)
                 {
