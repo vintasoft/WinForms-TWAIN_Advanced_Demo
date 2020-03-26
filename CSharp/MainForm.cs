@@ -111,7 +111,7 @@ namespace TwainAdvancedDemo
                     MessageBox.Show(GetFullExceptionMessage(ex), "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     // open a HTML page with article describing how to solve the problem
-                    OpenBrowser("http://www.vintasoft.com/docs/vstwain-dotnet/Programming-Twain-Device_Manager.html");
+                    OpenBrowser("https://www.vintasoft.com/docs/vstwain-dotnet/Programming-Twain-Device_Manager.html");
 
                     return;
                 }
