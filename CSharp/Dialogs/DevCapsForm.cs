@@ -5,6 +5,9 @@ using Vintasoft.Twain;
 
 namespace TwainAdvancedDemo
 {
+    /// <summary>
+    /// A form that allows to view information about device capabilities.
+    /// </summary>
     public partial class DevCapsForm : Form
     {
 
@@ -40,7 +43,7 @@ namespace TwainAdvancedDemo
 
 
 
-        #region Constructor
+        #region Constructors
 
         public DevCapsForm(Device device)
         {
@@ -63,8 +66,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Form is loaded.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void DevCapsForm_Load(object sender, EventArgs e)
         {
             try
@@ -92,8 +93,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Form is closing.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void DevCapsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (_device.State == DeviceState.Opened)
@@ -104,10 +103,8 @@ namespace TwainAdvancedDemo
         #region Show capability value
 
         /// <summary>
-        /// Gets information about selected capability.
+        /// Returns information about selected capability.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void supportedCapabilitiesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
@@ -127,10 +124,8 @@ namespace TwainAdvancedDemo
         }
 
         /// <summary>
-        /// Gets information about selected capability when the usage mode of capability is changed.
+        /// Returns information about selected capability when the usage mode of capability is changed.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void getMethodComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
@@ -148,10 +143,8 @@ namespace TwainAdvancedDemo
         }
 
         /// <summary>
-        /// Gets information about value of specified capability in specified usage mode.
+        /// Returns information about value of specified capability in specified usage mode.
         /// </summary>
-        /// <param name="deviceCapability"></param>
-        /// <param name="usageMode"></param>
         private void GetCapValue(DeviceCapability deviceCapability, DeviceCapabilityUsageMode usageMode)
         {
             usageModeTextBox.Text = "";
@@ -231,9 +224,8 @@ namespace TwainAdvancedDemo
         }
 
         /// <summary>
-        /// Gets information about the current value stored in OneValue container.
+        /// Returns information about the current value stored in OneValue container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
         private void AddCapOneCurrentValueToForm(TwainOneValueContainer deviceCapabilityValue)
         {
             if (deviceCapabilityValue.EnumValue != null)
@@ -243,18 +235,16 @@ namespace TwainAdvancedDemo
         }
 
         /// <summary>
-        /// Gets information about the current value stored in Range container.
+        /// Returns information about the current value stored in Range container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
         private void AddCapRangeCurrentValueToForm(TwainRangeValueContainer deviceCapabilityValue)
         {
             currentValueTextBox.Text = deviceCapabilityValue.Value.ToString();
         }
 
         /// <summary>
-        /// Gets information about the current value stored in Enum container.
+        /// Returns information about the current value stored in Enum container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
         private void AddCapEnumCurrentValueToForm(TwainEnumValueContainer deviceCapabilityValue)
         {
             int valueIndex = deviceCapabilityValue.ValueIndex;
@@ -269,18 +259,16 @@ namespace TwainAdvancedDemo
         }
 
         /// <summary>
-        /// Gets information about the default value stored in Range container.
+        /// Returns information about the default value stored in Range container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
         private void AddCapRangeDefaultValueToForm(TwainRangeValueContainer deviceCapabilityValue)
         {
             defaultValueTextBox.Text = deviceCapabilityValue.DefaultValue.ToString();
         }
 
         /// <summary>
-        /// Gets information about the default value stored in Enum container.
+        /// Returns information about the default value stored in Enum container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
         private void AddCapEnumDefaultValueToForm(TwainEnumValueContainer deviceCapabilityValue)
         {
             int defaultValueIndex = deviceCapabilityValue.DefaultValueIndex;
@@ -296,41 +284,37 @@ namespace TwainAdvancedDemo
         }
 
         /// <summary>
-        /// Gets information about the minimal value stored in Enum container.
+        /// Returns information about the minimal value stored in Enum container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
         private void AddCapMinValueToForm(TwainRangeValueContainer deviceCapabilityValue)
         {
             minValueTextBox.Text = deviceCapabilityValue.MinValue.ToString();
         }
 
         /// <summary>
-        /// Gets information about the maximal value stored in Enum container.
+        /// Returns information about the maximal value stored in Enum container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
         private void AddCapMaxValueToForm(TwainRangeValueContainer deviceCapabilityValue)
         {
             maxValueTextBox.Text = deviceCapabilityValue.MaxValue.ToString();
         }
 
         /// <summary>
-        /// Gets information about the step size of value stored in Enum container.
+        /// Returns information about the step size of value stored in Enum container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
         private void AddCapStepSizeToForm(TwainRangeValueContainer deviceCapabilityValue)
         {
             stepSizeTextBox.Text = deviceCapabilityValue.StepSize.ToString();
         }
-        
+
         /// <summary>
-        /// Gets information about the supported values stored in Array container.
+        /// Returns information about the supported values stored in Array container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
         private void AddCapValuesToForm(TwainArrayValueContainer deviceCapabilityValue)
         {
             if (deviceCapabilityValue.Values == null)
                 return;
-            
+
             if (deviceCapabilityValue.EnumValues != null)
             {
                 for (int i = 0; i < deviceCapabilityValue.Values.Length; i++)
@@ -351,8 +335,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Copies information about all capabilities to the clipboard.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void copyToClipboardButton_Click(object sender, EventArgs e)
         {
             if (_device.State == DeviceState.Closed)
@@ -445,9 +427,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Adds information about the value of capability in specified usage mode to the string builder.
         /// </summary>
-        /// <param name="capUsageMode"></param>
-        /// <param name="capValue"></param>
-        /// <param name="capsInfo"></param>
         private void AddCapInfoToCapsInfo(DeviceCapabilityUsageMode capUsageMode, TwainValueContainerBase capValue, StringBuilder capsInfo)
         {
             capsInfo.Append(string.Format("  Usage mode: {0}{1}", capUsageMode, Environment.NewLine));
@@ -486,8 +465,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Gets information about the current value stored in OneValue container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
-        /// <param name="capsInfo"></param>
         private void AddCapOneCurrentValueInfoToCapsInfo(TwainOneValueContainer deviceCapabilityValue, StringBuilder capsInfo)
         {
             if (deviceCapabilityValue.EnumValue != null)
@@ -499,8 +476,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Gets information about the current value stored in Range container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
-        /// <param name="capsInfo"></param>
         private void AddCapRangeCurrentValueInfoToCapsInfo(TwainRangeValueContainer deviceCapabilityValue, StringBuilder capsInfo)
         {
             capsInfo.Append(string.Format("    Current value: {0} ({1}){2}", deviceCapabilityValue.Value, deviceCapabilityValue.Value.GetType(), Environment.NewLine));
@@ -509,8 +484,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Gets information about the current value stored in Enum container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
-        /// <param name="capsInfo"></param>
         private void AddCapEnumCurrentValueInfoToCapsInfo(TwainEnumValueContainer deviceCapabilityValue, StringBuilder capsInfo)
         {
             if (deviceCapabilityValue.EnumValues != null)
@@ -523,12 +496,10 @@ namespace TwainAdvancedDemo
             else
                 capsInfo.Append(string.Format("    Current value index: {0}{1}", deviceCapabilityValue.ValueIndex, Environment.NewLine));
         }
-        
+
         /// <summary>
         /// Gets information about the default value stored in Range container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
-        /// <param name="capsInfo"></param>
         private void AddCapRangeDefaultValueInfoToCapsInfo(TwainRangeValueContainer deviceCapabilityValue, StringBuilder capsInfo)
         {
             capsInfo.Append(string.Format("    Default value: {0} ({1}){2}", deviceCapabilityValue.DefaultValue, deviceCapabilityValue.DefaultValue.GetType(), Environment.NewLine));
@@ -537,8 +508,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Gets information about the default value stored in Enum container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
-        /// <param name="capsInfo"></param>
         private void AddCapEnumDefaultValueInfoToCapsInfo(TwainEnumValueContainer deviceCapabilityValue, StringBuilder capsInfo)
         {
             if (deviceCapabilityValue.EnumValues != null)
@@ -555,8 +524,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Gets information about the minimal value stored in Enum container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
-        /// <param name="capsInfo"></param>
         private void AddCapMinValueInfoToCapsInfo(TwainRangeValueContainer deviceCapabilityValue, StringBuilder capsInfo)
         {
             capsInfo.Append(string.Format("    Min value: {0} ({1}){2}", deviceCapabilityValue.MinValue, deviceCapabilityValue.MinValue.GetType(), Environment.NewLine));
@@ -565,8 +532,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Gets information about the maximal value stored in Enum container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
-        /// <param name="capsInfo"></param>
         private void AddCapMaxValueInfoToCapsInfo(TwainRangeValueContainer deviceCapabilityValue, StringBuilder capsInfo)
         {
             capsInfo.Append(string.Format("    Max value: {0} ({1}){2}", deviceCapabilityValue.MaxValue, deviceCapabilityValue.MaxValue.GetType(), Environment.NewLine));
@@ -575,8 +540,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Gets information about the step size of value stored in Enum container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
-        /// <param name="capsInfo"></param>
         private void AddCapStepSizeInfoToCapsInfo(TwainRangeValueContainer deviceCapabilityValue, StringBuilder capsInfo)
         {
             capsInfo.Append(string.Format("    Step size: {0} ({1}){2}", deviceCapabilityValue.StepSize, deviceCapabilityValue.StepSize.GetType(), Environment.NewLine));
@@ -585,8 +548,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Gets information about the supported values stored in Array container.
         /// </summary>
-        /// <param name="deviceCapabilityValue"></param>
-        /// <param name="capsInfo"></param>
         private void AddCapValuesInfoToCapsInfo(TwainArrayValueContainer deviceCapabilityValue, StringBuilder capsInfo)
         {
             if (deviceCapabilityValue.Values == null ||
@@ -595,7 +556,7 @@ namespace TwainAdvancedDemo
                 capsInfo.Append(string.Format("    Supported values[0]:{0}", Environment.NewLine));
                 return;
             }
-            
+
             StringBuilder values = new StringBuilder();
 
             if (deviceCapabilityValue.Values.GetValue(0).GetType().Equals(typeof(string)))

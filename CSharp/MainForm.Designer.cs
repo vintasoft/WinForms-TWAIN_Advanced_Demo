@@ -92,27 +92,27 @@
             // 
             this.saveFileDialog1.FileName = "doc1";
             this.saveFileDialog1.Filter = "BMP image|*.bmp|GIF image|*.gif|JPEG image|*.jpg|PNG image|*.png|TIFF image|*.tif" +
-                "|PDF document|*.pdf";
+    "|PDF document|*.pdf";
             this.saveFileDialog1.FilterIndex = 3;
             // 
             // pictureBoxPanel
             // 
-            this.pictureBoxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxPanel.AutoScroll = true;
             this.pictureBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxPanel.Controls.Add(this.pictureBox1);
             this.pictureBoxPanel.Location = new System.Drawing.Point(9, 188);
             this.pictureBoxPanel.Name = "pictureBoxPanel";
-            this.pictureBoxPanel.Size = new System.Drawing.Size(671, 382);
+            this.pictureBoxPanel.Size = new System.Drawing.Size(685, 382);
             this.pictureBoxPanel.TabIndex = 81;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(669, 380);
+            this.pictureBox1.Size = new System.Drawing.Size(683, 380);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -164,7 +164,7 @@
             // 
             // imagesToAcquireNumericUpDown
             // 
-            this.imagesToAcquireNumericUpDown.Location = new System.Drawing.Point(71, 63);
+            this.imagesToAcquireNumericUpDown.Location = new System.Drawing.Point(80, 63);
             this.imagesToAcquireNumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -196,7 +196,7 @@
             this.adfGroupBox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.adfGroupBox.Location = new System.Drawing.Point(500, 37);
             this.adfGroupBox.Name = "adfGroupBox";
-            this.adfGroupBox.Size = new System.Drawing.Size(182, 88);
+            this.adfGroupBox.Size = new System.Drawing.Size(194, 88);
             this.adfGroupBox.TabIndex = 14;
             this.adfGroupBox.TabStop = false;
             this.adfGroupBox.Text = "Automatic Document Feeder";
@@ -204,7 +204,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(136, 66);
+            this.label1.Location = new System.Drawing.Point(147, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 0;
@@ -248,7 +248,7 @@
             // 
             this.useDuplexCheckBox.Location = new System.Drawing.Point(84, 17);
             this.useDuplexCheckBox.Name = "useDuplexCheckBox";
-            this.useDuplexCheckBox.Size = new System.Drawing.Size(82, 16);
+            this.useDuplexCheckBox.Size = new System.Drawing.Size(97, 16);
             this.useDuplexCheckBox.TabIndex = 15;
             this.useDuplexCheckBox.Text = "Use Duplex";
             // 
@@ -298,7 +298,7 @@
             this.devicesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.devicesComboBox.Location = new System.Drawing.Point(217, 11);
             this.devicesComboBox.Name = "devicesComboBox";
-            this.devicesComboBox.Size = new System.Drawing.Size(339, 21);
+            this.devicesComboBox.Size = new System.Drawing.Size(354, 21);
             this.devicesComboBox.TabIndex = 5;
             // 
             // twain2CompatibleCheckBox
@@ -314,7 +314,7 @@
             // 
             // deleteImageButton
             // 
-            this.deleteImageButton.Location = new System.Drawing.Point(500, 139);
+            this.deleteImageButton.Location = new System.Drawing.Point(510, 139);
             this.deleteImageButton.Name = "deleteImageButton";
             this.deleteImageButton.Size = new System.Drawing.Size(90, 23);
             this.deleteImageButton.TabIndex = 24;
@@ -349,7 +349,7 @@
             // 
             // getDeviceInfoButton
             // 
-            this.getDeviceInfoButton.Location = new System.Drawing.Point(562, 9);
+            this.getDeviceInfoButton.Location = new System.Drawing.Point(574, 9);
             this.getDeviceInfoButton.Name = "getDeviceInfoButton";
             this.getDeviceInfoButton.Size = new System.Drawing.Size(120, 23);
             this.getDeviceInfoButton.TabIndex = 6;
@@ -394,11 +394,11 @@
             // 
             // imageAcquisitionProgressBar
             // 
-            this.imageAcquisitionProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.imageAcquisitionProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.imageAcquisitionProgressBar.Location = new System.Drawing.Point(9, 576);
             this.imageAcquisitionProgressBar.Name = "imageAcquisitionProgressBar";
-            this.imageAcquisitionProgressBar.Size = new System.Drawing.Size(672, 23);
+            this.imageAcquisitionProgressBar.Size = new System.Drawing.Size(686, 23);
             this.imageAcquisitionProgressBar.TabIndex = 87;
             // 
             // imageGroupBox
@@ -486,7 +486,7 @@
             // 
             // clearImagesButton
             // 
-            this.clearImagesButton.Location = new System.Drawing.Point(592, 139);
+            this.clearImagesButton.Location = new System.Drawing.Point(603, 139);
             this.clearImagesButton.Name = "clearImagesButton";
             this.clearImagesButton.Size = new System.Drawing.Size(90, 23);
             this.clearImagesButton.TabIndex = 25;
@@ -495,14 +495,12 @@
             // 
             // MainForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 608);
+            this.ClientSize = new System.Drawing.Size(705, 608);
             this.Controls.Add(this.clearImagesButton);
             this.Controls.Add(this.imageGroupBox);
             this.Controls.Add(this.processImageButton);
             this.Controls.Add(this.imageAcquisitionProgressBar);
             this.Controls.Add(this.stretchImageCheckBox);
-            this.Controls.Add(this.pictureBoxPanel);
             this.Controls.Add(this.selectDefaultDeviceButton);
             this.Controls.Add(this.acquireImageButton);
             this.Controls.Add(this.openDeviceManagerButton);
@@ -519,6 +517,8 @@
             this.Controls.Add(this.nextImageButton);
             this.Controls.Add(this.previousImageButton);
             this.Controls.Add(this.devicesLabel);
+            this.Controls.Add(this.pictureBoxPanel);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VintaSoft TWAIN Advanced Demo";

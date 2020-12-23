@@ -47,7 +47,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Vintasoft.Twain" Version="12.0.2.1" />
+    <PackageReference Include="Vintasoft.Twain" Version="12.0.3.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -70,15 +70,15 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="App.ico" />
-    <None Include="Resources\NetCore\VintasoftTwainService.dll">
+    <None Include="Resources\DotNetCore3\VintasoftTwainService.dll">
       <Link>VintasoftTwainService.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\NetCore\VintasoftTwainService.exe">
+    <None Include="Resources\DotNetCore3\VintasoftTwainService.exe">
       <Link>VintasoftTwainService.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\NetCore\VintasoftTwainService.runtimeconfig.json">
+    <None Include="Resources\DotNetCore3\VintasoftTwainService.runtimeconfig.json">
       <Link>VintasoftTwainService.runtimeconfig.json</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -223,11 +223,11 @@
             // ImageProcessingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 534);
             this.Controls.Add(this.stretchImageCheckBox);
             this.Controls.Add(this.pictureBoxPanel);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "ImageProcessingForm";
             this.Text = "Image Processing";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ImageProcessingForm_FormClosing);

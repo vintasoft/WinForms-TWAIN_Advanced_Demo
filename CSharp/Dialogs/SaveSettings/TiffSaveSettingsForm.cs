@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Windows.Forms;
-using Vintasoft.Twain;
 using Vintasoft.Twain.ImageEncoders;
 
 namespace TwainAdvancedDemo
 {
+    /// <summary>
+    /// A form that allows to view and edit the TIFF encoder settings.
+    /// </summary>
 	public partial class TiffSaveSettingsForm : Form
     {
 
         #region Constructors
 
         public TiffSaveSettingsForm(bool isFileExist)
-		{
-			InitializeComponent();
+        {
+            InitializeComponent();
 
-			if (!isFileExist)
-			{
-				createNewDocumentaddToDocumentRadioButton.Checked = true;
-				addToDocumentRadioButton.Enabled = false;
-			}
+            if (!isFileExist)
+            {
+                createNewDocumentaddToDocumentRadioButton.Checked = true;
+                addToDocumentRadioButton.Enabled = false;
+            }
         }
 
         #endregion
@@ -40,13 +42,13 @@ namespace TwainAdvancedDemo
         }
 
         #endregion
-        
-        
-        
+
+
+
         #region Methods
 
         private void okButton_Click(object sender, EventArgs e)
-		{
+        {
             _saveAllImages = saveAllImagesaddToDocumentRadioButton.Checked;
 
             try
@@ -82,7 +84,7 @@ namespace TwainAdvancedDemo
             {
                 MessageBox.Show(ex.Message, "Error");
             }
-		}
+        }
 
         private void useStripsRadioButton_CheckedChanged(object sender, EventArgs e)
         {

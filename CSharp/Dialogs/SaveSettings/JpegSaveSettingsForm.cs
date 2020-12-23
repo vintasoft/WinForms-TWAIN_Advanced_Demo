@@ -4,13 +4,16 @@ using Vintasoft.Twain.ImageEncoders;
 
 namespace TwainAdvancedDemo
 {
-	public partial class JpegSaveSettingsForm : Form
-	{
+    /// <summary>
+    /// A form that allows to view and edit the JPEG encoder settings.
+    /// </summary>
+    public partial class JpegSaveSettingsForm : Form
+    {
 
         public JpegSaveSettingsForm()
-		{
-			InitializeComponent();
-		}
+        {
+            InitializeComponent();
+        }
 
 
 
@@ -19,11 +22,11 @@ namespace TwainAdvancedDemo
         {
             get { return _encoderSettings; }
         }
-        
-        
-        
+
+
+
         private void okButton_Click(object sender, EventArgs e)
-		{
+        {
             try
             {
                 _encoderSettings.JpegQuality = (int)qualityNumericUpDown.Value;
@@ -34,7 +37,7 @@ namespace TwainAdvancedDemo
             {
                 MessageBox.Show(ex.Message, "Error");
             }
-		}
+        }
 
-	}
+    }
 }

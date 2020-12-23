@@ -1,12 +1,31 @@
 ﻿using System;
 using System.Windows.Forms;
-using Vintasoft.Twain;
 using Vintasoft.Twain.ImageEncoders;
 
 namespace TwainAdvancedDemo
 {
+    /// <summary>
+    /// A form that allows to view and edit the PDF encoder settings.
+    /// </summary>
 	public partial class PdfSaveSettingsForm : Form
     {
+
+        #region Constructors
+
+        public PdfSaveSettingsForm(bool isFileExist)
+        {
+            InitializeComponent();
+
+            if (!isFileExist)
+            {
+                createNewDocumentRadioButton.Checked = true;
+                addToDocumentRadioButton.Enabled = false;
+            }
+        }
+
+        #endregion
+
+
 
         #region Properties
 
@@ -18,33 +37,18 @@ namespace TwainAdvancedDemo
 
         TwainPdfEncoderSettings _encoderSettings = new TwainPdfEncoderSettings();
         public TwainPdfEncoderSettings EncoderSettings
-		{
+        {
             get { return _encoderSettings; }
-		}
-
-        #endregion
-
-
-        #region Constructor
-
-        public PdfSaveSettingsForm(bool isFileExist)
-		{
-			InitializeComponent();
-
-			if (!isFileExist)
-			{
-				createNewDocumentRadioButton.Checked = true;
-				addToDocumentRadioButton.Enabled = false;
-			}
         }
 
         #endregion
 
 
+
         #region Methods
 
         private void okButton_Click(object sender, EventArgs e)
-		{
+        {
             _saveAllImages = saveAllImagesRadioButton.Checked;
 
             _encoderSettings.PdfMultiPage = addToDocumentRadioButton.Checked;
@@ -52,33 +56,33 @@ namespace TwainAdvancedDemo
             _encoderSettings.PdfDocumentInfo.Author = pdfAuthorTextBox.Text;
             _encoderSettings.PdfDocumentInfo.Title = pdfTitleTextBox.Text;
 
-			if (noneCompressionRadioButton.Checked)
+            if (noneCompressionRadioButton.Checked)
                 _encoderSettings.PdfImageCompression = PdfImageCompression.None;
-			else if (ccittCompressionRadioButton.Checked)
+            else if (ccittCompressionRadioButton.Checked)
                 _encoderSettings.PdfImageCompression = PdfImageCompression.CcittFax;
-			else if (lzwCompressionRadioButton.Checked)
+            else if (lzwCompressionRadioButton.Checked)
                 _encoderSettings.PdfImageCompression = PdfImageCompression.LZW;
-			else if (jpegCompressionRadioButton.Checked)
-			{
+            else if (jpegCompressionRadioButton.Checked)
+            {
                 _encoderSettings.PdfImageCompression = PdfImageCompression.JPEG;
                 _encoderSettings.JpegQuality = (int)jpegQualityNumericUpDown.Value;
-			}
-			else if (zipCompressionRadioButton.Checked)
+            }
+            else if (zipCompressionRadioButton.Checked)
                 _encoderSettings.PdfImageCompression = PdfImageCompression.ZIP;
-			else if (autoCompressionRadioButton.Checked)
+            else if (autoCompressionRadioButton.Checked)
                 _encoderSettings.PdfImageCompression = PdfImageCompression.Auto;
 
-			DialogResult = DialogResult.OK;
-		}
+            DialogResult = DialogResult.OK;
+        }
 
-		private void EnableJpegCompressionQuality(object sender, EventArgs e)
-		{
-			gbJpegCompression.Enabled = true;
-		}
+        private void EnableJpegCompressionQuality(object sender, EventArgs e)
+        {
+            gbJpegCompression.Enabled = true;
+        }
 
-		private void DisableJpegCompressionQuality(object sender, EventArgs e)
-		{
-			gbJpegCompression.Enabled = false;
+        private void DisableJpegCompressionQuality(object sender, EventArgs e)
+        {
+            gbJpegCompression.Enabled = false;
         }
 
         #endregion

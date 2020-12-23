@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.Net;
 using System.IO;
+using System.Net;
+using System.Windows.Forms;
 using Vintasoft.Twain;
 using Vintasoft.Twain.ImageEncoders;
 using Vintasoft.Twain.ImageUploading.Ftp;
@@ -14,19 +14,25 @@ namespace TwainAdvancedDemo
 
         #region Fields
 
-        // acquired image to upload
+        /// <summary>
+        /// Acquired image to upload.
+        /// </summary>
         AcquiredImage _acquiredImageToUpload;
 
-        // FTP uploader
+        /// <summary>
+        /// FTP uploader.
+        /// </summary>
         FtpUpload _ftpUpload = null;
-        // HTTP uploader
+        /// <summary>
+        /// HTTP uploader.
+        /// </summary>
         HttpUpload _httpUpload = null;
 
         #endregion
 
 
 
-        #region Constructor
+        #region Constructors
 
         public UploadForm(AcquiredImage acquiredImageToUpload)
         {
@@ -46,8 +52,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Start image uploading process to FTP server.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ftpUploadButton_Click(object sender, EventArgs e)
         {
             MainForm mainForm;
@@ -98,8 +102,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Cancel image uploading process.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ftpUploadCancelButton_Click(object sender, EventArgs e)
         {
             _ftpUpload.Abort();
@@ -108,8 +110,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Status of uploading process is changed.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void _ftpUpload_StatusChanged(object sender, Vintasoft.Twain.ImageUploading.Ftp.StatusChangedEventArgs e)
         {
             ftpStatusLabel.Text = e.StatusString;
@@ -118,8 +118,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Progress of uploading process is changed.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void _ftpUpload_ProgressChanged(object sender, Vintasoft.Twain.ImageUploading.Ftp.ProgressChangedEventArgs e)
         {
             ftpUploadProgressBar.Value = e.BytesUploaded;
@@ -130,8 +128,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Uploading process is completed.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void _ftpUpload_Completed(object sender, Vintasoft.Twain.ImageUploading.Ftp.CompletedEventArgs e)
         {
             if (e.ErrorCode == Vintasoft.Twain.ImageUploading.Ftp.ErrorCode.None)
@@ -144,15 +140,13 @@ namespace TwainAdvancedDemo
         }
 
         #endregion
-        
+
 
         #region HTTP upload
 
         /// <summary>
         /// Start image uploading process to FTP server.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void httpUploadButton_Click(object sender, EventArgs e)
         {
             MainForm mainForm;
@@ -193,8 +187,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Cancel image uploading process.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void httpUploadCancelButton_Click(object sender, EventArgs e)
         {
             _httpUpload.Abort();
@@ -203,8 +195,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Status of uploading process is changed.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void _httpUpload_StatusChanged(object sender, Vintasoft.Twain.ImageUploading.Http.StatusChangedEventArgs e)
         {
             httpStatusLabel.Text = e.StatusString;
@@ -213,8 +203,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Progress of uploading process is changed.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void _httpUpload_ProgressChanged(object sender, Vintasoft.Twain.ImageUploading.Http.ProgressChangedEventArgs e)
         {
             httpUploadProgressBar.Value = e.BytesUploaded;
@@ -225,8 +213,6 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Uploading process is completed.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void _httpUpload_Completed(object sender, Vintasoft.Twain.ImageUploading.Http.CompletedEventArgs e)
         {
             if (e.ErrorCode == 0)
@@ -235,6 +221,10 @@ namespace TwainAdvancedDemo
                 {
                     MessageBox.Show("HTTP: Image is uploaded successfully!", "HTTP");
                     MessageBox.Show("Response content: " + e.ResponseContent, "HTTP");
+                }
+                else if (e.ResponseCode == HttpStatusCode.NoContent)
+                {
+                    MessageBox.Show("HTTP: Image is uploaded successfully!", "HTTP");
                 }
                 else
                 {
@@ -249,7 +239,7 @@ namespace TwainAdvancedDemo
             httpUploadButton.Enabled = true;
             httpUploadCancelButton.Enabled = false;
         }
-        
+
         #endregion
 
 

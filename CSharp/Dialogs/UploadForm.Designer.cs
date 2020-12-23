@@ -80,7 +80,7 @@
             this.httpUrlTextBox.Name = "httpUrlTextBox";
             this.httpUrlTextBox.Size = new System.Drawing.Size(248, 20);
             this.httpUrlTextBox.TabIndex = 0;
-            this.httpUrlTextBox.Text = "http://demos.vintasoft.com/AspNetTwainDemos/ImageUpload.aspx";
+            this.httpUrlTextBox.Text = "https://demos.vintasoft.com/AspNetMvcTwainScanningDemo/api/ImageUploadApi";
             // 
             // label7
             // 
@@ -447,7 +447,6 @@
             // UploadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.exitButton;
             this.ClientSize = new System.Drawing.Size(591, 293);
             this.Controls.Add(this.groupBox2);
@@ -456,6 +455,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "UploadForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Upload image onto FTP or HTTP server";
