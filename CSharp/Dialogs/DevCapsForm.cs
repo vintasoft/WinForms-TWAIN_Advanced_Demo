@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Text;
-using Vintasoft.Twain;
+using Vintasoft.WinTwain;
 
 namespace TwainAdvancedDemo
 {

@@ -91,9 +91,9 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.FileName = "doc1";
-            this.saveFileDialog1.Filter = "BMP image|*.bmp|GIF image|*.gif|JPEG image|*.jpg|PNG image|*.png|TIFF image|*.tif" +
+            this.saveFileDialog1.Filter = "BMP image|*.bmp|JPEG image|*.jpg|PNG image|*.png|TIFF image|*.tif" +
     "|PDF document|*.pdf";
-            this.saveFileDialog1.FilterIndex = 3;
+            this.saveFileDialog1.FilterIndex = 2;
             // 
             // pictureBoxPanel
             // 

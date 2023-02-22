@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Vintasoft.Twain;
-using Vintasoft.Twain.ImageProcessing;
+using Vintasoft.WinTwain;
+using Vintasoft.WinTwain.ImageProcessing;
 
 namespace TwainAdvancedDemo
 {

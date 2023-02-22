@@ -5,8 +5,8 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 
-using Vintasoft.Twain;
-using Vintasoft.Twain.ImageEncoders;
+using Vintasoft.WinTwain;
+using Vintasoft.WinTwain.ImageEncoders;
 
 namespace TwainAdvancedDemo
 {
@@ -137,8 +137,11 @@ namespace TwainAdvancedDemo
                 }
                 catch (TwainDeviceManagerException ex)
                 {
-                    // close the device manager
-                    _deviceManager.Close();
+                    if (_deviceManager.State != DeviceManagerState.Closed)
+                    {
+                        // close the device manager
+                        _deviceManager.Close();
+                    }
 
                     // show dialog with error message
                     MessageBox.Show(GetFullExceptionMessage(ex), "TWAIN device manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -809,7 +812,7 @@ namespace TwainAdvancedDemo
 
                 switch (saveFileDialog1.FilterIndex)
                 {
-                    case 3:	// JPEG
+                    case 2:	// JPEG
                         using (JpegSaveSettingsForm dlg = new JpegSaveSettingsForm())
                         {
                             if (dlg.ShowDialog() != DialogResult.OK)
@@ -819,7 +822,7 @@ namespace TwainAdvancedDemo
                         }
                         break;
 
-                    case 5: // TIFF
+                    case 4: // TIFF
                         using (TiffSaveSettingsForm dlg = new TiffSaveSettingsForm(isFileExist))
                         {
                             if (dlg.ShowDialog() != DialogResult.OK)
@@ -830,7 +833,7 @@ namespace TwainAdvancedDemo
                         }
                         break;
 
-                    case 6: // PDF
+                    case 5: // PDF
                         using (PdfSaveSettingsForm dlg = new PdfSaveSettingsForm(isFileExist))
                         {
                             if (dlg.ShowDialog() != DialogResult.OK)
@@ -852,9 +855,9 @@ namespace TwainAdvancedDemo
                     _images[0].Save(filename, encoderSettings);
 
                     // enable multipage support if necessary
-                    if (saveFileDialog1.FilterIndex == 5)
+                    if (saveFileDialog1.FilterIndex == 4)
                         ((TwainTiffEncoderSettings)encoderSettings).TiffMultiPage = true;
-                    else if (saveFileDialog1.FilterIndex == 6)
+                    else if (saveFileDialog1.FilterIndex == 5)
                         ((TwainPdfEncoderSettings)encoderSettings).PdfMultiPage = true;
 
                     // save second and next images

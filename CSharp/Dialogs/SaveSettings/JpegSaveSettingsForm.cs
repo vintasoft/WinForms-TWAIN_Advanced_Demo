@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Vintasoft.Twain.ImageEncoders;
+using Vintasoft.WinTwain.ImageEncoders;
 
 namespace TwainAdvancedDemo
 {

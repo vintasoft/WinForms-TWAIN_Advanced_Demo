@@ -2,10 +2,10 @@
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
-using Vintasoft.Twain;
-using Vintasoft.Twain.ImageEncoders;
-using Vintasoft.Twain.ImageUploading.Ftp;
-using Vintasoft.Twain.ImageUploading.Http;
+using Vintasoft.WinTwain;
+using Vintasoft.WinTwain.ImageEncoders;
+using Vintasoft.WinTwain.ImageUploading.Ftp;
+using Vintasoft.WinTwain.ImageUploading.Http;
 
 namespace TwainAdvancedDemo
 {
@@ -63,9 +63,9 @@ namespace TwainAdvancedDemo
             try
             {
                 _ftpUpload = new FtpUpload(this);
-                _ftpUpload.StatusChanged += new EventHandler<Vintasoft.Twain.ImageUploading.Ftp.StatusChangedEventArgs>(_ftpUpload_StatusChanged);
-                _ftpUpload.ProgressChanged += new EventHandler<Vintasoft.Twain.ImageUploading.Ftp.ProgressChangedEventArgs>(_ftpUpload_ProgressChanged);
-                _ftpUpload.Completed += new EventHandler<Vintasoft.Twain.ImageUploading.Ftp.CompletedEventArgs>(_ftpUpload_Completed);
+                _ftpUpload.StatusChanged += new EventHandler<Vintasoft.WinTwain.ImageUploading.Ftp.StatusChangedEventArgs>(_ftpUpload_StatusChanged);
+                _ftpUpload.ProgressChanged += new EventHandler<Vintasoft.WinTwain.ImageUploading.Ftp.ProgressChangedEventArgs>(_ftpUpload_ProgressChanged);
+                _ftpUpload.Completed += new EventHandler<Vintasoft.WinTwain.ImageUploading.Ftp.CompletedEventArgs>(_ftpUpload_Completed);
 
                 _ftpUpload.Host = ftpServerTextBox.Text;
 
@@ -110,7 +110,7 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Status of uploading process is changed.
         /// </summary>
-        private void _ftpUpload_StatusChanged(object sender, Vintasoft.Twain.ImageUploading.Ftp.StatusChangedEventArgs e)
+        private void _ftpUpload_StatusChanged(object sender, Vintasoft.WinTwain.ImageUploading.Ftp.StatusChangedEventArgs e)
         {
             ftpStatusLabel.Text = e.StatusString;
         }
@@ -118,19 +118,19 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Progress of uploading process is changed.
         /// </summary>
-        private void _ftpUpload_ProgressChanged(object sender, Vintasoft.Twain.ImageUploading.Ftp.ProgressChangedEventArgs e)
+        private void _ftpUpload_ProgressChanged(object sender, Vintasoft.WinTwain.ImageUploading.Ftp.ProgressChangedEventArgs e)
         {
             ftpUploadProgressBar.Value = e.BytesUploaded;
-            if (e.StatusCode == Vintasoft.Twain.ImageUploading.Ftp.StatusCode.SendingData)
+            if (e.StatusCode == Vintasoft.WinTwain.ImageUploading.Ftp.StatusCode.SendingData)
                 ftpStatusLabel.Text = string.Format("{0}{1} Uploaded {2} bytes from {3} bytes.", e.StatusString, Environment.NewLine, e.BytesUploaded, e.BytesTotal);
         }
 
         /// <summary>
         /// Uploading process is completed.
         /// </summary>
-        private void _ftpUpload_Completed(object sender, Vintasoft.Twain.ImageUploading.Ftp.CompletedEventArgs e)
+        private void _ftpUpload_Completed(object sender, Vintasoft.WinTwain.ImageUploading.Ftp.CompletedEventArgs e)
         {
-            if (e.ErrorCode == Vintasoft.Twain.ImageUploading.Ftp.ErrorCode.None)
+            if (e.ErrorCode == Vintasoft.WinTwain.ImageUploading.Ftp.ErrorCode.None)
                 MessageBox.Show("FTP: Image is uploaded successfully!", "FTP");
             else
                 MessageBox.Show(e.ErrorString, "FTP error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -160,9 +160,9 @@ namespace TwainAdvancedDemo
             try
             {
                 _httpUpload = new HttpUpload(this);
-                _httpUpload.StatusChanged += new EventHandler<Vintasoft.Twain.ImageUploading.Http.StatusChangedEventArgs>(_httpUpload_StatusChanged);
-                _httpUpload.ProgressChanged += new EventHandler<Vintasoft.Twain.ImageUploading.Http.ProgressChangedEventArgs>(_httpUpload_ProgressChanged);
-                _httpUpload.Completed += new EventHandler<Vintasoft.Twain.ImageUploading.Http.CompletedEventArgs>(_httpUpload_Completed);
+                _httpUpload.StatusChanged += new EventHandler<Vintasoft.WinTwain.ImageUploading.Http.StatusChangedEventArgs>(_httpUpload_StatusChanged);
+                _httpUpload.ProgressChanged += new EventHandler<Vintasoft.WinTwain.ImageUploading.Http.ProgressChangedEventArgs>(_httpUpload_ProgressChanged);
+                _httpUpload.Completed += new EventHandler<Vintasoft.WinTwain.ImageUploading.Http.CompletedEventArgs>(_httpUpload_Completed);
 
                 _httpUpload.Url = httpUrlTextBox.Text;
                 _httpUpload.Timeout = 5000;
@@ -195,7 +195,7 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Status of uploading process is changed.
         /// </summary>
-        private void _httpUpload_StatusChanged(object sender, Vintasoft.Twain.ImageUploading.Http.StatusChangedEventArgs e)
+        private void _httpUpload_StatusChanged(object sender, Vintasoft.WinTwain.ImageUploading.Http.StatusChangedEventArgs e)
         {
             httpStatusLabel.Text = e.StatusString;
         }
@@ -203,17 +203,17 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Progress of uploading process is changed.
         /// </summary>
-        private void _httpUpload_ProgressChanged(object sender, Vintasoft.Twain.ImageUploading.Http.ProgressChangedEventArgs e)
+        private void _httpUpload_ProgressChanged(object sender, Vintasoft.WinTwain.ImageUploading.Http.ProgressChangedEventArgs e)
         {
             httpUploadProgressBar.Value = e.BytesUploaded;
-            if (e.StatusCode == Vintasoft.Twain.ImageUploading.Http.StatusCode.Sending)
+            if (e.StatusCode == Vintasoft.WinTwain.ImageUploading.Http.StatusCode.Sending)
                 httpStatusLabel.Text = string.Format("{0}{3} Uploaded {1}  bytes from {2} bytes", e.StatusString, e.BytesUploaded, e.BytesTotal, Environment.NewLine);
         }
 
         /// <summary>
         /// Uploading process is completed.
         /// </summary>
-        private void _httpUpload_Completed(object sender, Vintasoft.Twain.ImageUploading.Http.CompletedEventArgs e)
+        private void _httpUpload_Completed(object sender, Vintasoft.WinTwain.ImageUploading.Http.CompletedEventArgs e)
         {
             if (e.ErrorCode == 0)
             {
@@ -250,9 +250,6 @@ namespace TwainAdvancedDemo
             {
                 case ".bmp":
                     return new TwainBmpEncoderSettings();
-
-                case ".gif":
-                    return new TwainGifEncoderSettings();
 
                 case ".pdf":
                     return new TwainPdfEncoderSettings();
