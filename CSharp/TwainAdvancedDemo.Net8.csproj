@@ -47,7 +47,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Vintasoft.WinTwain" Version="14.1.1.1" />
+    <PackageReference Include="Vintasoft.WinTwain" Version="14.1.2.1" />
   </ItemGroup>
 
   <ItemGroup>
