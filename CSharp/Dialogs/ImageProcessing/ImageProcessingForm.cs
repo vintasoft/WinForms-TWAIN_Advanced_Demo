@@ -263,7 +263,7 @@ namespace TwainAdvancedDemo
         {
             lock (_image)
             {
-                _image.Progress += new EventHandler<AcquiredImageProcessingProgressEventArgs>(ImageProcessingProgress);
+                _image.Progress += new EventHandler<TwainAcquiredImageProcessingProgressEventArgs>(ImageProcessingProgress);
 
                 try
                 {
@@ -314,7 +314,7 @@ namespace TwainAdvancedDemo
                             int imageYPosition = (int)param4NumericUpDown.Value;
                             try
                             {
-                                _image.ResizeCanvas(canvasWidth, canvasHeight, BorderColor.AutoDetect, imageXPosition, imageYPosition);
+                                _image.ResizeCanvas(canvasWidth, canvasHeight, TwainBorderColor.AutoDetect, imageXPosition, imageYPosition);
                             }
                             catch (ArgumentOutOfRangeException ex)
                             {
@@ -324,7 +324,7 @@ namespace TwainAdvancedDemo
 
                         case "Rotate":
                             int angle = (int)param1NumericUpDown.Value;
-                            _image.Rotate(angle, BorderColor.AutoDetect);
+                            _image.Rotate(angle, TwainBorderColor.AutoDetect);
                             break;
 
                         case "Despeckle":
@@ -338,7 +338,7 @@ namespace TwainAdvancedDemo
                         case "Deskew":
                             int scanIntervalX = (int)param1NumericUpDown.Value;
                             int scanIntervalY = (int)param2NumericUpDown.Value;
-                            _image.Deskew(BorderColor.AutoDetect, scanIntervalX, scanIntervalY);
+                            _image.Deskew(TwainBorderColor.AutoDetect, scanIntervalX, scanIntervalY);
                             break;
 
                         case "Remove Border":
@@ -347,12 +347,12 @@ namespace TwainAdvancedDemo
                             break;
                     }
                 }
-                catch (ImagingException ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
 
-                _image.Progress -= new EventHandler<AcquiredImageProcessingProgressEventArgs>(ImageProcessingProgress);
+                _image.Progress -= new EventHandler<TwainAcquiredImageProcessingProgressEventArgs>(ImageProcessingProgress);
 
                 UpdateImage();
             }
@@ -361,7 +361,7 @@ namespace TwainAdvancedDemo
         /// <summary>
         /// Progress of processing command is changed.
         /// </summary>
-        private void ImageProcessingProgress(object sender, AcquiredImageProcessingProgressEventArgs e)
+        private void ImageProcessingProgress(object sender, TwainAcquiredImageProcessingProgressEventArgs e)
         {
             processingCommandProgressBar.Value = e.Progress;
         }

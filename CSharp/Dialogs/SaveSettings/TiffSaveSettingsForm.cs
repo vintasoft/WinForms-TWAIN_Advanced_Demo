@@ -56,20 +56,20 @@ namespace TwainAdvancedDemo
                 _encoderSettings.TiffMultiPage = addToDocumentRadioButton.Checked;
 
                 if (noneCompressionRadioButton.Checked)
-                    _encoderSettings.TiffCompression = TiffCompression.None;
+                    _encoderSettings.TiffCompression = TwainTiffCompression.None;
                 else if (ccittCompressionRadioButton.Checked)
-                    _encoderSettings.TiffCompression = TiffCompression.CCITGroup4;
+                    _encoderSettings.TiffCompression = TwainTiffCompression.CCITGroup4;
                 else if (lzwCompressionRadioButton.Checked)
-                    _encoderSettings.TiffCompression = TiffCompression.LZW;
+                    _encoderSettings.TiffCompression = TwainTiffCompression.LZW;
                 else if (jpegCompressionRadioButton.Checked)
                 {
-                    _encoderSettings.TiffCompression = TiffCompression.JPEG;
+                    _encoderSettings.TiffCompression = TwainTiffCompression.JPEG;
                     _encoderSettings.JpegQuality = (int)jpegQualityNumericUpDown.Value;
                 }
                 else if (zipCompressionRadioButton.Checked)
-                    _encoderSettings.TiffCompression = TiffCompression.ZIP;
+                    _encoderSettings.TiffCompression = TwainTiffCompression.ZIP;
                 else if (autoCompressionRadioButton.Checked)
-                    _encoderSettings.TiffCompression = TiffCompression.Auto;
+                    _encoderSettings.TiffCompression = TwainTiffCompression.Auto;
 
                 if (useStripsRadioButton.Checked)
                     _encoderSettings.UseTiles = false;

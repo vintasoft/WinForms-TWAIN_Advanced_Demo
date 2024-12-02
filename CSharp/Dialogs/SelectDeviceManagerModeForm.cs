@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 
@@ -31,6 +32,7 @@ namespace TwainAdvancedDemo
         /// <value>
         /// <b>true</b> if 64-bit TWAIN2 device manager must use 32-bit devices; otherwise, <b>false</b>.
         /// </value>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool Use32BitDevices
         {
             get

@@ -30,18 +30,8 @@
         {
             this.httpUrlTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.httpStatusLabel = new System.Windows.Forms.Label();
-            this.httpFileFieldValueTextBox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.httpTextField2TextBox = new System.Windows.Forms.TextBox();
-            this.httpFileFieldTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.httpUploadCancelButton = new System.Windows.Forms.Button();
-            this.httpTextField1TextBox = new System.Windows.Forms.TextBox();
             this.ftpFileNameTextBox = new System.Windows.Forms.TextBox();
             this.ftpServerTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,10 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ftpPathTextBox = new System.Windows.Forms.TextBox();
             this.ftpPasswordTextBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.ftpUserTextBox = new System.Windows.Forms.TextBox();
-            this.httpTextField2ValueTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ftpUploadProgressBar = new System.Windows.Forms.ProgressBar();
             this.flagPassMode = new System.Windows.Forms.CheckBox();
@@ -62,14 +49,10 @@
             this.ftpUploadButton = new System.Windows.Forms.Button();
             this.ftpUploadCancelButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.httpUploadProgressBar = new System.Windows.Forms.ProgressBar();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.httpTextField1ValueTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ftpStatusLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.exitButton = new System.Windows.Forms.Button();
-            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +63,7 @@
             this.httpUrlTextBox.Name = "httpUrlTextBox";
             this.httpUrlTextBox.Size = new System.Drawing.Size(248, 20);
             this.httpUrlTextBox.TabIndex = 0;
-            this.httpUrlTextBox.Text = "https://demos.vintasoft.com/AspNetMvcTwainScanningDemo/api/ImageUploadApi";
+            this.httpUrlTextBox.Text = "https://demos.vintasoft.com/AspNetCoreTwainScanningDemo/api/ImageUploadApi";
             // 
             // label7
             // 
@@ -90,67 +73,12 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "URL:";
             // 
-            // label15
-            // 
-            this.label15.Location = new System.Drawing.Point(8, 184);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(40, 16);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "Status:";
-            // 
             // httpStatusLabel
             // 
             this.httpStatusLabel.Location = new System.Drawing.Point(56, 184);
             this.httpStatusLabel.Name = "httpStatusLabel";
             this.httpStatusLabel.Size = new System.Drawing.Size(240, 24);
             this.httpStatusLabel.TabIndex = 17;
-            // 
-            // httpFileFieldValueTextBox
-            // 
-            this.httpFileFieldValueTextBox.Location = new System.Drawing.Point(200, 16);
-            this.httpFileFieldValueTextBox.Name = "httpFileFieldValueTextBox";
-            this.httpFileFieldValueTextBox.Size = new System.Drawing.Size(80, 20);
-            this.httpFileFieldValueTextBox.TabIndex = 1;
-            this.httpFileFieldValueTextBox.Text = "demo.jpg";
-            // 
-            // label13
-            // 
-            this.label13.Location = new System.Drawing.Point(160, 64);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(40, 16);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "Value:";
-            // 
-            // label12
-            // 
-            this.label12.Location = new System.Drawing.Point(160, 40);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(40, 16);
-            this.label12.TabIndex = 7;
-            this.label12.Text = "Value:";
-            // 
-            // label11
-            // 
-            this.label11.Location = new System.Drawing.Point(160, 16);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 16);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Value:";
-            // 
-            // httpTextField2TextBox
-            // 
-            this.httpTextField2TextBox.Location = new System.Drawing.Point(72, 64);
-            this.httpTextField2TextBox.Name = "httpTextField2TextBox";
-            this.httpTextField2TextBox.Size = new System.Drawing.Size(80, 20);
-            this.httpTextField2TextBox.TabIndex = 4;
-            // 
-            // httpFileFieldTextBox
-            // 
-            this.httpFileFieldTextBox.Location = new System.Drawing.Point(72, 16);
-            this.httpFileFieldTextBox.Name = "httpFileFieldTextBox";
-            this.httpFileFieldTextBox.Size = new System.Drawing.Size(80, 20);
-            this.httpFileFieldTextBox.TabIndex = 0;
-            this.httpFileFieldTextBox.Text = "file";
             // 
             // label14
             // 
@@ -159,31 +87,6 @@
             this.label14.Size = new System.Drawing.Size(64, 16);
             this.label14.TabIndex = 16;
             this.label14.Text = "File name:";
-            // 
-            // label10
-            // 
-            this.label10.Location = new System.Drawing.Point(8, 40);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 16);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Text field 1:";
-            // 
-            // httpUploadCancelButton
-            // 
-            this.httpUploadCancelButton.Enabled = false;
-            this.httpUploadCancelButton.Location = new System.Drawing.Point(160, 216);
-            this.httpUploadCancelButton.Name = "httpUploadCancelButton";
-            this.httpUploadCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.httpUploadCancelButton.TabIndex = 17;
-            this.httpUploadCancelButton.Text = "Cancel";
-            this.httpUploadCancelButton.Click += new System.EventHandler(this.httpUploadCancelButton_Click);
-            // 
-            // httpTextField1TextBox
-            // 
-            this.httpTextField1TextBox.Location = new System.Drawing.Point(72, 40);
-            this.httpTextField1TextBox.Name = "httpTextField1TextBox";
-            this.httpTextField1TextBox.Size = new System.Drawing.Size(80, 20);
-            this.httpTextField1TextBox.TabIndex = 2;
             // 
             // ftpFileNameTextBox
             // 
@@ -219,7 +122,7 @@
             // 
             // httpUploadButton
             // 
-            this.httpUploadButton.Location = new System.Drawing.Point(72, 216);
+            this.httpUploadButton.Location = new System.Drawing.Point(108, 216);
             this.httpUploadButton.Name = "httpUploadButton";
             this.httpUploadButton.Size = new System.Drawing.Size(75, 23);
             this.httpUploadButton.TabIndex = 5;
@@ -251,22 +154,6 @@
             this.ftpPasswordTextBox.TabIndex = 4;
             this.ftpPasswordTextBox.Text = "guest";
             // 
-            // label9
-            // 
-            this.label9.Location = new System.Drawing.Point(8, 64);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(64, 16);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Text field 2:";
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(8, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 16);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "File field:";
-            // 
             // ftpUserTextBox
             // 
             this.ftpUserTextBox.Location = new System.Drawing.Point(72, 72);
@@ -274,13 +161,6 @@
             this.ftpUserTextBox.Size = new System.Drawing.Size(64, 20);
             this.ftpUserTextBox.TabIndex = 3;
             this.ftpUserTextBox.Text = "guest";
-            // 
-            // httpTextField2ValueTextBox
-            // 
-            this.httpTextField2ValueTextBox.Location = new System.Drawing.Point(200, 64);
-            this.httpTextField2ValueTextBox.Name = "httpTextField2ValueTextBox";
-            this.httpTextField2ValueTextBox.Size = new System.Drawing.Size(80, 20);
-            this.httpTextField2ValueTextBox.TabIndex = 5;
             // 
             // label1
             // 
@@ -349,50 +229,11 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Status:";
             // 
-            // httpUploadProgressBar
-            // 
-            this.httpUploadProgressBar.Location = new System.Drawing.Point(8, 152);
-            this.httpUploadProgressBar.Name = "httpUploadProgressBar";
-            this.httpUploadProgressBar.Size = new System.Drawing.Size(288, 23);
-            this.httpUploadProgressBar.TabIndex = 1;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.httpTextField2ValueTextBox);
-            this.groupBox3.Controls.Add(this.httpTextField1ValueTextBox);
-            this.groupBox3.Controls.Add(this.httpFileFieldValueTextBox);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.httpTextField2TextBox);
-            this.groupBox3.Controls.Add(this.httpTextField1TextBox);
-            this.groupBox3.Controls.Add(this.httpFileFieldTextBox);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(8, 48);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(288, 96);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Web form parameters";
-            // 
-            // httpTextField1ValueTextBox
-            // 
-            this.httpTextField1ValueTextBox.Location = new System.Drawing.Point(200, 40);
-            this.httpTextField1ValueTextBox.Name = "httpTextField1ValueTextBox";
-            this.httpTextField1ValueTextBox.Size = new System.Drawing.Size(80, 20);
-            this.httpTextField1ValueTextBox.TabIndex = 3;
-            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.httpUploadProgressBar);
-            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.httpUrlTextBox);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.httpStatusLabel);
-            this.groupBox2.Controls.Add(this.httpUploadCancelButton);
             this.groupBox2.Controls.Add(this.httpUploadButton);
             this.groupBox2.Location = new System.Drawing.Point(278, 5);
             this.groupBox2.Name = "groupBox2";
@@ -446,21 +287,18 @@
             // 
             // UploadForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.CancelButton = this.exitButton;
             this.ClientSize = new System.Drawing.Size(591, 293);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.exitButton);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "UploadForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Upload image onto FTP or HTTP server";
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -473,18 +311,8 @@
 
         private System.Windows.Forms.TextBox httpUrlTextBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label httpStatusLabel;
-        private System.Windows.Forms.TextBox httpFileFieldValueTextBox;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox httpTextField2TextBox;
-        private System.Windows.Forms.TextBox httpFileFieldTextBox;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button httpUploadCancelButton;
-        private System.Windows.Forms.TextBox httpTextField1TextBox;
         private System.Windows.Forms.TextBox ftpFileNameTextBox;
         private System.Windows.Forms.TextBox ftpServerTextBox;
         private System.Windows.Forms.Label label4;
@@ -493,10 +321,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox ftpPathTextBox;
         private System.Windows.Forms.TextBox ftpPasswordTextBox;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox ftpUserTextBox;
-        private System.Windows.Forms.TextBox httpTextField2ValueTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar ftpUploadProgressBar;
         private System.Windows.Forms.CheckBox flagPassMode;
@@ -505,9 +330,6 @@
         private System.Windows.Forms.Button ftpUploadButton;
         private System.Windows.Forms.Button ftpUploadCancelButton;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ProgressBar httpUploadProgressBar;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox httpTextField1ValueTextBox;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label ftpStatusLabel;
         private System.Windows.Forms.GroupBox groupBox1;

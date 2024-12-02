@@ -57,20 +57,20 @@ namespace TwainAdvancedDemo
             _encoderSettings.PdfDocumentInfo.Title = pdfTitleTextBox.Text;
 
             if (noneCompressionRadioButton.Checked)
-                _encoderSettings.PdfImageCompression = PdfImageCompression.None;
+                _encoderSettings.PdfImageCompression = TwainPdfImageCompression.None;
             else if (ccittCompressionRadioButton.Checked)
-                _encoderSettings.PdfImageCompression = PdfImageCompression.CcittFax;
+                _encoderSettings.PdfImageCompression = TwainPdfImageCompression.CcittFax;
             else if (lzwCompressionRadioButton.Checked)
-                _encoderSettings.PdfImageCompression = PdfImageCompression.LZW;
+                _encoderSettings.PdfImageCompression = TwainPdfImageCompression.LZW;
             else if (jpegCompressionRadioButton.Checked)
             {
-                _encoderSettings.PdfImageCompression = PdfImageCompression.JPEG;
+                _encoderSettings.PdfImageCompression = TwainPdfImageCompression.JPEG;
                 _encoderSettings.JpegQuality = (int)jpegQualityNumericUpDown.Value;
             }
             else if (zipCompressionRadioButton.Checked)
-                _encoderSettings.PdfImageCompression = PdfImageCompression.ZIP;
+                _encoderSettings.PdfImageCompression = TwainPdfImageCompression.ZIP;
             else if (autoCompressionRadioButton.Checked)
-                _encoderSettings.PdfImageCompression = PdfImageCompression.Auto;
+                _encoderSettings.PdfImageCompression = TwainPdfImageCompression.Auto;
 
             DialogResult = DialogResult.OK;
         }
