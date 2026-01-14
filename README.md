@@ -1,4 +1,4 @@
-# VintaSoft WinForms TWAIN Advanced Demo
+﻿# VintaSoft WinForms TWAIN Advanced Demo
 
 This WinForms project uses <a href="https://www.vintasoft.com/vstwain-dotnet-index.html">VintaSoft TWAIN .NET SDK</a> and demonstrates how to enumerate TWAIN image scanners, get capabilities of TWAIN image scanner, acquire images from TWAIN image scanner and save scanned images to a local disk or upload onto HTTP or FTP server.
 
