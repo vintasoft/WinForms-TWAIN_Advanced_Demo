@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -16,6 +16,9 @@
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>    
+
+    <Version>15.5.0.1</Version>
+    <ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
@@ -49,7 +52,6 @@
   <ItemGroup>
     <PackageReference Include="Vintasoft.WinTwain" Version="15.5.0.1" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Include="Dialogs\DevCapsForm.cs" />
     <Compile Include="Dialogs\DevCapsForm.Designer.cs" />
@@ -65,8 +67,16 @@
     <Compile Include="Dialogs\SelectDeviceManagerModeForm.Designer.cs" />
     <Compile Include="Dialogs\UploadForm.cs" />
     <Compile Include="Dialogs\UploadForm.Designer.cs" />
-    <Compile Include="MainForm.cs" />
-    <Compile Include="MainForm.Designer.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="App.ico" />
@@ -90,6 +100,5 @@
     <EmbeddedResource Include="Dialogs\SaveSettings\TiffSaveSettingsForm.resx" />
     <EmbeddedResource Include="Dialogs\SelectDeviceManagerModeForm.resx" />
     <EmbeddedResource Include="Dialogs\UploadForm.resx" />
-    <EmbeddedResource Include="MainForm.resx" />
   </ItemGroup>
 </Project>
